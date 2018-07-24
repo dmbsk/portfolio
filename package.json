@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack",
     "dev": "webpack --mode development",
-    "prod": "webpack --mode production",
-    "start": "webpack-dev-server --content-base dist/ & open http://localhost:8080/"
+    "build:dev": "webpack --env dev --progress --profile --colors",
+    "build:prod": "webpack --env prod --progress --profile --colors",
+    "start": "webpack-dev-server"
   },
   "author": "",
   "license": "ISC",
@@ -28,10 +30,11 @@
     "sass-loader": "^7.0.3",
     "style-loader": "^0.21.0",
     "webpack": "^4.16.1",
-    "webpack-cli": "^3.0.8",
+    "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.4"
   },
   "dependencies": {
-    "node-nightly": "^1.7.3"
+    "global": "^4.3.2",
+    "three": "^0.94.0"
   }
 }

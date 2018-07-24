@@ -1,16 +1,13 @@
 let HtmlWebpackPlugin = require('html-webpack-plugin');
 let path = require('path');
-let formatter = require('eslint/lib/formatters/stylish');
 
 module.exports = {
   entry: './src/js/app.js',
   output: {
-    path: path.resolve(`${__dirname}, '/dist/'`),
+    publicPath : '/dist/',
     filename: 'bundle.js'
   },
   watch: true,
-  mode: 'development',
-  devtool: "source-map",
   module: {
     rules: [
       {
@@ -25,9 +22,9 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
-          { loader: "style-loader" },
-          { loader: "css-loader" },
-          { loader: "sass-loader" }// compiles Sass to CSS}
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
+          { loader: 'sass-loader' }// compiles Sass to CSS}
         ]
       },
       {
@@ -42,7 +39,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: [["env", {
+            presets: [['env', {
               targets: {
                 browsers: ['> 1%', 'last 2 versions']
               }
@@ -50,8 +47,14 @@ module.exports = {
           }
         }
       }
-    ]
+    ],
   },
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 8080
+  },
+
   plugins: [
     new HtmlWebpackPlugin({
       title: '...',
