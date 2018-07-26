@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import '../scss/style.scss';
 import Scene from './three/scene';
+import Particle from './three/particle';
 
 const canvasDiv = document.getElementById('canvasDiv');
 
@@ -18,5 +19,14 @@ window.addEventListener('resize', function() {
 });
 
 scene.createCanvas(canvasDiv);
+
+let animate = function () {
+  requestAnimationFrame( animate );
+  scene.renderer.render( scene.scene, scene.camera );
+};
+animate();
+
+const particle = new Particle();
+scene.scene.add(particle.particleSystem);
 
 

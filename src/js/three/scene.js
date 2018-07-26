@@ -13,7 +13,6 @@ class Scene{
     this.renderer = new THREE.WebGLRenderer();
     this.renderer.setSize( this.width, this.height );
     this.camera.position.z = cameraZ;
-
   }
   createCanvas(canvasDiv) {
     canvasDiv.appendChild( this.renderer.domElement );
@@ -32,6 +31,7 @@ class Scene{
 
     this.renderer.setSize( this.width, this.height );
   }
+
 }
 
 export default Scene;
