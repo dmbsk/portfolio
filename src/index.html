@@ -5,5 +5,17 @@
     <title>Krzysztof Podobiński</title>
 </head>
 <body>
+<script type="x-shader/x-vertex" id="vertexShader">
+void main()
+{
+	vec4 modelViewPosition = modelViewMatrix * vec4(position, 1.0);
+	gl_Position = projectionMatrix * modelViewPosition;
+}
+</script>
+<script type="x-shader/x-fragment" id="fragmentShader">
+void main() {
+	gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+}
+</script>
 </body>
 </html>
