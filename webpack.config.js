@@ -54,7 +54,7 @@ module.exports = {
     compress: true,
     port: 8080
   },
-
+  performance: { hints: false },
   plugins: [
     new HtmlWebpackPlugin({
       title: '...',

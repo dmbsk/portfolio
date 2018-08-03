@@ -1,16 +1,15 @@
 import * as THREE from 'three';
 
 const sceneLight = (scene) => {
-  //scene.add(new THREE.AmbientLight(0x666666));
+  scene.add(new THREE.AmbientLight(0xffffff, 1));
 
-  const light = new THREE.DirectionalLight(0xffffff, 2);
-  light.position.set(-5, 5, 40);
-  light.position.multiplyScalar(4);
+  const light = new THREE.PointLight(0xffffff, 4, 50);
+  light.position.z = 24;
   light.castShadow = true;
-  light.shadow.mapSize.width = 512;  // default
-  light.shadow.mapSize.height = 512; // default
+  light.shadow.mapSize.width = 1024;
+  light.shadow.mapSize.height = 1024;
   light.shadow.camera.near = 0.5;    // default
-  light.shadow.camera.far = 500;     // default
+  light.shadow.camera.far = 100;
 
   const d = 200;
 
@@ -18,12 +17,10 @@ const sceneLight = (scene) => {
   light.shadow.camera.right = d;
   light.shadow.camera.top = d;
   light.shadow.camera.bottom = -d;
-  light.shadow.camera.far = 1000;
+  light.shadow.camera.far = 50;
 
   scene.add( light );
 
-  const helper = new THREE.CameraHelper( light.shadow.camera );
-  scene.add( helper );
 
   return {
     light

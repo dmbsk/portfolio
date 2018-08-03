@@ -15,9 +15,10 @@ const scene = new THREE.Scene();
 scene.background = new THREE.Color( 0xffffff );
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 1, 100000 );
 camera.position.z = 40;
-camera.lookAt(new THREE.Vector3(0, 4, 0));
+camera.position.x = 0;
+camera.position.y = 0;
 const renderer = createRenderer();
-sceneLight(scene);
+const lights = sceneLight(scene);
 
 const cubeGenSpec = {
   cubesAmountForEachAxis: {
@@ -38,6 +39,7 @@ const cubeGenSpec = {
 };
 const cubesGenerator = new CubesGenerator(cubeGenSpec);
 cubesGenerator.addToScene(scene);
+camera.lookAt(0, 0, 0);
 
 const mouse = new THREE.Vector2();
 const raycaster = new THREE.Raycaster();
@@ -51,7 +53,6 @@ const goToZ = 12;
 const cubesDefaultZ = cubesGenerator.cubes[0].position.z;
 let animate = () => {
   requestAnimationFrame( animate );
-  camera.lookAt(0, 0, 0);
 
   raycaster.setFromCamera( mouse, camera );
   let intersects = raycaster.intersectObjects(cubesGenerator.cubes);
