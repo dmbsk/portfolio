@@ -51,7 +51,6 @@ window.addEventListener('touchend', (event) => {
   const touchobj = event.changedTouches[0];
   mouse.x = parseInt(touchobj.clientX);
   mouse.y = parseInt(touchobj.clientY);
-  console.log("working");
 });
 
 let lastInteract = [];
