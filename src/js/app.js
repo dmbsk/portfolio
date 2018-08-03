@@ -47,6 +47,12 @@ window.addEventListener('mousemove', (event) => {
   mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
   mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
 });
+window.addEventListener('touchend', (event) => {
+  const touchobj = event.changedTouches[0];
+  mouse.x = parseInt(touchobj.clientX);
+  mouse.y = parseInt(touchobj.clientY);
+  console.log("working");
+});
 
 let lastInteract = [];
 const goToZ = 12;
@@ -76,6 +82,7 @@ let animate = () => {
     TWEEN.add(tweenTo);
     lastInteract.push(intersects[0]);
   }
+
   TWEEN.update();
   renderer.render( scene, camera );
 };
